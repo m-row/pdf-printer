@@ -41,6 +41,7 @@ RUN apk add --no-cache libstdc++ \
 COPY --from=wkhtmltopdf-builder ["/bin/wkhtmltopdf", "/bin/wkhtmltopdf"]
 COPY --from=go-builder ["/build/main", "/"]
 COPY --from=go-builder ["/etc/ssl/certs/ca-certificates.crt", "/etc/ssl/certs/ca-certificates.crt"]
+COPY ./.env ./.env
 
 EXPOSE ${PORT}
 
