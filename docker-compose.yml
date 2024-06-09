@@ -3,6 +3,7 @@ services:
         container_name: "${CONTAINER_NAME}"
         image: "sadeem/${CONTAINER_NAME}:${CONTAINER_TAG}"
         restart: always
+        env_file: .env
         expose:
           - "${PORT}"
         build:

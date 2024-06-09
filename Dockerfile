@@ -12,8 +12,8 @@ ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
 COPY . .
 RUN --mount=type=cache,target=/root/.cache/go-build \
     go build \
-    -ldflags="-s -w -X pdfprinter.CommitCount=$(git rev-list --count HEAD) -X pdfprinter.CommitDescribe=$(git describe --always)" \
-    -o main ./cmd/api
+    -ldflags="-s -w -X main.CommitCount=$(git rev-list --count HEAD) -X main.CommitDescribe=$(git describe --always)" \
+    -o main ./
 
 # stage 3: main container
 FROM alpine:3.20.0
@@ -24,7 +24,7 @@ RUN apk add --no-cache libstdc++ \
     libx11 \
     libxrender \
     libxext \
-    libssl1.1 \
+    libssl3 \
     ca-certificates \
     fontconfig \
     freetype \
