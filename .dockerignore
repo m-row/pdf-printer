@@ -1,0 +1,21 @@
+# Files
+.dockerignore
+.editorconfig
+.gitignore
+.env.example
+Dockerfile
+Makefile
+LICENSE
+.air.toml
+**/*.md
+**/*_test.go
+docker-compose*.yaml
+.DS_Store
+thumb.db
+
+# Folders
+.idea/
+tmp/
+vendor/
+.github/
+build/

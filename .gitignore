@@ -1,0 +1,10 @@
+vendor
+.env
+.idea
+tmp
+main
+main.exe
+
+./*/**/.DS_Store
+notes.md
+.DS_Store

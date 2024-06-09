@@ -1,0 +1,10 @@
+services:
+    pdf-printer:
+        container_name: "${CONTAINER_NAME}"
+        image: "sadeem/${CONTAINER_NAME}:${CONTAINER_TAG}"
+        restart: always
+        expose:
+          - "${PORT}"
+        build:
+            context: .
+            dockerfile: Dockerfile

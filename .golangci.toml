@@ -1,0 +1,103 @@
+[run]
+  deadline = "1m"
+  tests = true
+
+[linters]
+  disable-all = true
+  enable = [
+    "asasalint",
+    "asciicheck",
+    "bidichk",
+    "bodyclose",
+    "containedctx",
+    "contextcheck",
+    "dupword",
+    "durationcheck",
+    "errcheck",
+    "errchkjson",
+    "errname",
+    "errorlint",
+    "exhaustive",
+    "exportloopref",
+    "forbidigo",
+    "goconst",
+    "gocyclo",
+    "gocritic",
+    "gomodguard",
+    "gosec",
+    "gosimple",
+    "govet",
+    "grouper",
+    "ineffassign",
+    "lll",
+    "makezero",
+    "maintidx",
+    "misspell",
+    "nakedret",
+    "nilerr",
+    "noctx",
+    "nolintlint",
+    "nonamedreturns",
+    "nosprintfhostport",
+    "predeclared",
+    "sqlclosecheck",
+    "staticcheck",
+    "stylecheck",
+    "tenv",
+    "tparallel",
+    "typecheck",
+    "unconvert",
+    "unparam",
+    "unused",
+    "usestdlibvars",
+    "vetshadow",
+    "wastedassign",
+  ]
+
+[linters-settings.stylecheck]
+    checks = [
+        "all",
+        "-ST1000",
+        "-ST1003",
+    ]
+    
+[linters-settings.govet]
+    "enable-all" = true
+
+[linters-settings.lll]
+    line-length = 80
+    tab-width = 4
+
+[linters-settings.nolintlint]
+    allow-leading-space = false
+    allow-unused = false
+    allow-no-explanation = ["errorlint", "lll", "misspell", "gosec"]
+    require-explanation = false
+    require-specific = true
+
+[linters-settings.unparam]
+    check-exported = true
+
+[issues]
+exclude-use-default = false
+  [[issues.exclude-rules]]
+  text = "weak cryptographic primitive"
+  linters = ["gosec"]
+
+  [[issues.exclude-rules]]
+  linters = [
+    "bodyclose"
+  ]
+  path = "_test.go"
+
+  [[issues.exclude-rules]]
+  linters = [
+    "govet"
+  ]
+  text = "^(fieldalignment|shadow)"
+
+  [[issues.exclude-rules]]
+  linters = [
+    "govet"
+  ]
+  text = "shadow: declaration of \"err\" shadows declaration"
