@@ -36,6 +36,7 @@ func (c *Controller) Print(ctx echo.Context) error {
 	pdf.AddPage(page)
 
 	if err := pdf.Create(); err != nil {
+		slog.Error(err.Error())
 		return err
 	}
 
@@ -45,5 +46,8 @@ func (c *Controller) Print(ctx echo.Context) error {
 		Add("Content-Disposition", "attachment;filename=generated.pdf")
 
 	_, err = ctx.Response().Write(pdf.Buffer().Bytes())
+	if err != nil {
+		slog.Error(err.Error())
+	}
 	return err
 }
