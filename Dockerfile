@@ -1,8 +1,8 @@
 # stage 1: wkhtmltopdf-builder
-FROM surnet/alpine-wkhtmltopdf:3.20.0-0.12.6-small as wkhtmltopdf-builder
+FROM --platform=linux/amd64 surnet/alpine-wkhtmltopdf:3.20.0-0.12.6-small as wkhtmltopdf-builder
 
 # stage 2: go-builder
-FROM golang:1.22.3-alpine3.18 AS go-builder
+FROM --platform=linux/amd64 golang:1.22.3-alpine3.18 AS go-builder
 
 WORKDIR /build
 COPY go.mod go.sum ./
@@ -16,7 +16,7 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
     -o main ./
 
 # stage 3: main container
-FROM alpine:3.20.0
+FROM --platform=linux/amd64 alpine:3.20.0
 
 WORKDIR /
 
