@@ -15,6 +15,7 @@ func (c *Controller) Print(ctx echo.Context) error {
 		slog.Error(err.Error())
 		return err
 	}
+
 	pdf, err := wkhtmltopdf.NewPDFGenerator()
 	if err != nil {
 		slog.Error(err.Error())
@@ -27,7 +28,7 @@ func (c *Controller) Print(ctx echo.Context) error {
 	pdf.Grayscale.Set(false)
 
 	page := wkhtmltopdf.NewPageReader(bytes.NewReader(v))
-	page.EnableLocalFileAccess.Set(false)
+	page.EnableLocalFileAccess.Set(true)
 	page.FooterRight.Set("[page] / [toPage]")
 	page.FooterLeft.Set("[date] [time]")
 	page.FooterFontSize.Set(10)
